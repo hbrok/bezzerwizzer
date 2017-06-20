@@ -1,0 +1,13 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "version": "0.1.0",
+    "showOutput": "always",
+    "tasks": [{
+        "taskName": "Compile SCSS",
+        "command": "node-sass",
+        "isShellCommand": true,
+        "args": ["styles/index.scss", "styles/index.css"],
+        "isBuildCommand": true,
+        "isBackground": true
+    }]
+}

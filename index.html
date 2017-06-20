@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Bezzerwizzer</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption:700" rel="stylesheet">
+</head>
+
+<body>
+    <div class="game-section">
+        <div class="notice notice-zwap">
+            <p class="notice-text">Choose tiles to Zwap</p>
+
+            <div class="notice-wrapper">
+                <div class="tile-placeholder-wrapper">
+                    <div class="tile tile-placeholder tile-giving"></div>
+                    <div class="tile-placeholder-title">Yours</div>
+                </div>
+
+                <div class="tile-placeholder-wrapper">
+                    <div class="tile tile-placeholder tile-taking"></div>
+                    <div class="tile-placeholder-title">Theirs</div>
+                </div>
+            </div>
+
+            <button class="notice-button button-confirm" data-confirm>Zwap!</button>
+            <button class="notice-button button-cancel" data-cancel>Cancel</button>
+        </div>
+
+        <div class="players">
+            <div class="player-actions" data-color="green">
+                <span class="player-name" contenteditable>Player 1</span>
+                <button data-color="green" data-move="1" title="Move forwards one space">+</button>
+                <button data-color="green" data-move="-1" title="Move backwards one space">-</button>
+                <div class="tiles">
+                    <button class="tile tile-zwap" data-color="green" data-zwap><span>z</span></button>
+                    <button class="tile tile-bezzerwizzer" data-color="green" data-bezzerwizzer><span>b</span></button>
+                    <button class="tile tile-bezzerwizzer" data-color="green" data-bezzerwizzer><span>b</span></button>
+                    <button class="tile tile-category" data-color="green"><img src="" alt=""></button>
+                    <button class="tile tile-category" data-color="green"><img src="" alt=""></button>
+                    <button class="tile tile-category" data-color="green"><img src="" alt=""></button>
+                    <button class="tile tile-category" data-color="green"><img src="" alt=""></button>
+                </div>
+            </div>
+
+            <div class="player-actions" data-color="yellow">
+                <span class="player-name" contenteditable>Player 2</span>
+                <button data-color="yellow" data-move="1" title="Move forwards one space">+</button>
+                <button data-color="yellow" data-move="-1" title="Move backwards one space">-</button>
+                <div class="tiles">
+                    <button class="tile tile-zwap" data-color="yellow" data-zwap><span>z</span></button>
+                    <button class="tile tile-bezzerwizzer" data-color="yellow"><span>b</span></button>
+                    <button class="tile tile-bezzerwizzer" data-color="yellow"><span>b</span></button>
+                    <button class="tile tile-category" data-color="yellow"><img src="" alt=""></button>
+                    <button class="tile tile-category" data-color="yellow"><img src="" alt=""></button>
+                    <button class="tile tile-category" data-color="yellow"><img src="" alt=""></button>
+                    <button class="tile tile-category" data-color="yellow"><img src="" alt=""></button>
+                </div>
+            </div>
+
+            <div class="player-actions" data-color="red">
+                <span class="player-name" contenteditable>Player 3</span>
+                <button data-color="red" data-move="1" title="Move forwards one space">+</button>
+                <button data-color="red" data-move="-1" title="Move backwards one space">-</button>
+                <div class="tiles">
+                    <button class="tile tile-zwap" data-color="red" data-zwap><span>z</span></button>
+                    <button class="tile tile-bezzerwizzer" data-color="red"><span>b</span></button>
+                    <button class="tile tile-bezzerwizzer" data-color="red"><span>b</span></button>
+                    <button class="tile tile-category" data-color="red"><img src="" alt=""></button>
+                    <button class="tile tile-category" data-color="red"><img src="" alt=""></button>
+                    <button class="tile tile-category" data-color="red"><img src="" alt=""></button>
+                    <button class="tile tile-category" data-color="red"><img src="" alt=""></button>
+                </div>
+            </div>
+
+            <div class="player-actions" data-color="blue">
+                <span class="player-name" contenteditable>Player 4</span>
+                <button data-color="blue" data-move="1" title="Move forwards one space">+</button>
+                <button data-color="blue" data-move="-1" title="Move backwards one space">-</button>
+                <div class="tiles">
+                    <button class="tile tile-zwap" data-color="blue" data-zwap><span>z</span></button>
+                    <button class="tile tile-bezzerwizzer" data-color="blue"><span>b</span></button>
+                    <button class="tile tile-bezzerwizzer" data-color="blue"><span>b</span></button>
+                    <button class="tile tile-category" data-color="blue"><img src="" alt=""></button>
+                    <button class="tile tile-category" data-color="blue"><img src="" alt=""></button>
+                    <button class="tile tile-category" data-color="blue"><img src="" alt=""></button>
+                    <button class="tile tile-category" data-color="blue"><img src="" alt=""></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="play-area">
+            <div class="board">
+                <div class="space" data-space="1">
+                    <div class="pawn" data-color="green"></div>
+                    <div class="pawn" data-color="yellow"></div>
+                    <div class="pawn" data-color="red"></div>
+                    <div class="pawn" data-color="blue"></div>
+                </div>
+                <div class="space" data-space="2"></div>
+                <div class="space" data-space="3"></div>
+                <div class="space" data-space="4"></div>
+                <div class="space" data-space="5"></div>
+                <div class="space" data-space="6"></div>
+                <div class="space" data-space="7"></div>
+                <div class="space" data-space="8"></div>
+                <div class="space" data-space="9"></div>
+                <div class="space" data-space="10"></div>
+                <div class="space" data-space="11"></div>
+                <div class="space" data-space="12"></div>
+                <div class="space" data-space="13"></div>
+                <div class="space" data-space="14"></div>
+                <div class="space" data-space="15"></div>
+                <div class="space" data-space="16"></div>
+                <div class="space" data-space="17"></div>
+                <div class="space" data-space="18"></div>
+                <div class="space" data-space="19"></div>
+                <div class="space" data-space="20"></div>
+                <div class="title">bezzerwizzer</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <script src="scripts/index.js"></script>
+</body>
+</html>
