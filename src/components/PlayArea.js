@@ -9,6 +9,11 @@ class PlayArea extends React.Component {
     constructor() {
         super();
 
+        this.filterTiles = this.filterTiles.bind(this);
+        this.flipCategoryTile = this.flipCategoryTile.bind(this);
+        this.flipZwapTile = this.flipZwapTile.bind(this);
+        this.flipBezzerwizzerTile = this.flipBezzerwizzerTile.bind(this);
+
         // get initial state
         this.state = {
             players: {
@@ -33,22 +38,49 @@ class PlayArea extends React.Component {
         };
     }
 
+    flipCategoryTile(key) {
+        console.log('cat');
+    }
+
+    flipZwapTile(key) {
+        console.log('zwap');
+    }
+
+    flipBezzerwizzerTile(key) {
+        console.log('bezzerwizzer');
+
+    }
+
+    filterTiles(color) {
+        let playerTiles = [];
+
+        Object.entries(tiles)
+                .forEach((entry) => {
+                    const [key, value] = entry;
+                    // console.log(`${key}: ${value.player}`);
+                    
+                    if (value.player === color) {
+                        playerTiles.push(tiles[key]);
+                    }
+                });
+
+        return playerTiles;
+    }
+
     render() {
         return(
             <div className="players">
-                {/*<PlayerArea color="blue" />*/}
-                {/*<PlayerArea color="yellow" />*/}
-                {/*<PlayerArea color="green" />*/}
-                {/*<PlayerArea color="red" />*/}
-
-                {
+                { 
                     Object
                         .keys(this.state.players)
                         .map(playerKey => <PlayerCard
-                                        key={playerKey}
-                                        color={playerKey}
-                                        name={this.state.players[playerKey].name}
-                                        tiles={tiles} />)
+                                            key={playerKey}
+                                            color={playerKey}
+                                            name={this.state.players[playerKey].name}
+                                            tiles={this.filterTiles(this.state.players[playerKey].color)}
+                                            flipCategoryTile={this.flipCategoryTile}
+                                            flipZwapTile={this.flipZwapTile}
+                                            flipBezzerwizzerTile={this.flipBezzerwizzerTile} />)
                 }
             </div>
         )

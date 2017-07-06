@@ -7,11 +7,14 @@ import TileCategory from './TileCategory';
 //     name: React.propTypes.string.isRequired,
 //     color: React.propTypes.string.isRequired,
 //     tiles: React.propTypes.object.isRequired,
+//     flipCategoryTile: React.propTypes.func.isRequired,
+//     flipZwapTile: React.propTypes.func.isRequired,
+//     flipBezzerwizzerTile: React.propTypes.func.isRequired,
 // }
 
 class PlayerCard extends React.Component {
     render() {
-        const { tiles, name, color } = this.props;
+        const { tiles, name, color, flipCategoryTile, flipZwapTile, flipBezzerwizzerTile } = this.props;
 
         return(
             <div className="player-actions">
@@ -20,11 +23,11 @@ class PlayerCard extends React.Component {
                 <button data-color="red" data-move="-1" title="Move backwards one space">-</button>
 
                 <div className="tiles">
-                    <TileZwap color={color} />
-                    <TileBezzerwizzer color={color} />
-                    <TileBezzerwizzer color={color} />
+                    <TileZwap color={color} onClick={flipZwapTile} />
+                    <TileBezzerwizzer color={color} onClick={flipBezzerwizzerTile} />
+                    <TileBezzerwizzer color={color} onClick={flipBezzerwizzerTile} />
 
-                    {Object.keys(tiles).map(key => <TileCategory name={console.log(tiles[key].name)} imageSrc={tiles[key].image} />)}
+                    {Object.keys(tiles).map(key => <TileCategory name={tiles[key].name} imageSrc={tiles[key].image} onClick={flipCategoryTile} />)}
                 </div>
             </div>
         );
