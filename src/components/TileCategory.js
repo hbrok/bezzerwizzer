@@ -8,7 +8,7 @@ import Tile from './Tile';
 
 class TileCategory extends React.Component {
     render() {
-        const { imageSrc, name } = this.props;
+        const { imageSrc, name, onClick } = this.props;
         const content = <img src={imageSrc} alt={name} />;
 
         return (
@@ -16,6 +16,7 @@ class TileCategory extends React.Component {
                 type="category"
                 content={content}
                 flipped={false}
+                onClick={onClick}
             />
         );
     }

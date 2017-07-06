@@ -3,12 +3,13 @@ import Tile from './Tile';
 
 // TileBezzerwizzer.propTypes = {
 //     color: React.propTypes.string.isRequired,
+//     onClick: React.propTypes.func.isRequired,
 // }
 
 class TileBezzerwizzer extends React.Component {
     render() {
+        const { color, onClick } = this.props;
         const content = <span>b</span>;
-        const color = this.props.color;
 
         return (
             <Tile 
@@ -16,6 +17,7 @@ class TileBezzerwizzer extends React.Component {
                 content={content}
                 flipped={false}
                 color={color}
+                onClick={onClick}
             />
         );
     }

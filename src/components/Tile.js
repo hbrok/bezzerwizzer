@@ -10,11 +10,11 @@ import React from 'react';
 
 class Tile extends React.Component {
     render() {
-        const { color, flipped, type, content } = this.props;
+        const { color, flipped, type, content, onClick } = this.props;
         // const filpped = this.props.flipped;
 
         return(
-            <button className={`tile tile-${type} ${flipped ? 'flipped' : ''}`} data-color={color}>{content}</button>
+            <button className={`tile tile-${type} ${flipped ? 'flipped' : ''}`} data-color={color} onClick={onClick}>{content}</button>
         );
     }
 }
