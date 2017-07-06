@@ -27,7 +27,7 @@ class PlayerCard extends React.Component {
                     <TileBezzerwizzer color={color} onClick={flipBezzerwizzerTile} />
                     <TileBezzerwizzer color={color} onClick={flipBezzerwizzerTile} />
 
-                    {Object.keys(tiles).map(key => <TileCategory name={tiles[key].name} imageSrc={tiles[key].image} onClick={flipCategoryTile} />)}
+                    {Object.keys(tiles).map(key => <TileCategory key={tiles[key].name} name={tiles[key].name} imageSrc={tiles[key].image} onClick={flipCategoryTile} />)}
                 </div>
             </div>
         );
