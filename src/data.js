@@ -7,78 +7,97 @@ module.exports = {
     },
     artStage: {
       name: 'Art & Stage',
-      player: 'green'
+      player: 'green',
+      image: '/icons/art-stage.png'
     },
     communities: {
       name: 'Communities',
-      player: 'green'
+      player: 'green',
+      image: '/icons/communities.png'
     },
     design: {
       name: 'Design',
-      player: 'green'
+      player: 'green',
+      image: '/icons/design.png'
     },
     film: {
       name: 'Film',
-      player: 'red'
+      player: 'red',
+      image: '/icons/film.png'
     },
     finance: {
       name: 'Finance',
-      player: 'red'
+      player: 'red',
+      image: '/icons/finance.png'
     },
     foodDrink: {
       name: 'Food & Drink',
-      player: 'red'
+      player: 'red',
+      image: '/icons/food-drink.png'
     },
     geography: {
       name: 'Geography',
-      player: 'red'
+      player: 'red',
+      image: '/icons/geography.png'
     },
     history: {
       name: 'History',
-      player: 'blue'
+      player: 'blue',
+      image: '/icons/history.png'
     },
     humans: {
       name: 'Humans',
-      player: 'blue'
+      player: 'blue',
+      image: '/icons/humans.png'
     },
     language: {
       name: 'Language',
-      player: 'blue'
+      player: 'blue',
+      image: '/icons/language.png'
     },
     literature: {
       name: 'Literature',
-      player: 'blue'
+      player: 'blue',
+      image: '/icons/literature.png'
     },
     music: {
       name: 'Music',
-      player: null
+      player: null,
+      image: '/icons/music.png'
     },
     nature: {
       name: 'Nature',
-      player: null
+      player: null,
+      image: '/icons/nature.png'
     },
     politics: {
       name: 'Politics',
-      player: null
+      player: null,
+      image: '/icons/politics.png'
     },
     science: {
       name: 'Science',
-      player: null
+      player: null,
+      image: '/icons/science.png'
     },
     sportsGames: {
       name: 'Sports & Games',
-      player: 'yellow'
+      player: 'yellow',
+      image: '/icons/sports-games.png'
     },
     technology: {
       name: 'Technology',
-      player: 'yellow'
+      player: 'yellow',
+      image: '/icons/technology.png'
     },
     traditionBeliefs: {
       name: 'Tradition & Beliefs',
-      player: 'yellow'
+      player: 'yellow',
+      image: '/icons/tradition-beliefs.png'
     },
     tvRadio: {
       name: 'TV & Radio',
-      player: 'yellow'
+      player: 'yellow',
+      image: '/icons/tv-radio.png'
     }
 };
