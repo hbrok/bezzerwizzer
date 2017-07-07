@@ -8,16 +8,16 @@ import Tile from './Tile';
 
 class TileBezzerwizzer extends React.Component {
     render() {
-        const { color, onClick } = this.props;
+        const { color, bezzerwizzer, onClick } = this.props;
         const content = <span>b</span>;
 
         return (
             <Tile 
                 type="bezzerwizzer"
                 content={content}
-                flipped={false}
+                flipped={!bezzerwizzer}
                 color={color}
-                onClick={onClick}
+                onClick={() => onClick(color)}
             />
         );
     }

@@ -7,16 +7,16 @@ import Tile from './Tile';
 
 class TileZwap extends React.Component {
     render() {
-        const { color, onClick } = this.props;
+        const { color, zwap, onClick } = this.props;
         const content = <span>z</span>;
 
         return (
             <Tile 
                 type="zwap"
                 content={content}
-                flipped={false}
+                flipped={!zwap}
                 color={color}
-                onClick={onClick}
+                onClick={() => onClick(color)}
             />
         );
     }
