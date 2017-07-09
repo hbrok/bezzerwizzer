@@ -15,7 +15,7 @@ import PlayerMoveButton from './PlayerMoveButton';
 class PlayerCard extends React.Component {
     render() {
         const { tiles, movePlayer, flipCategoryTile, flipZwapTile, flipBezzerwizzerTile } = this.props;
-        const { name, color, zwap, bezzerwizzer } = this.props.player;
+        const { name, color, zwap, bezzerwizzer1, bezzerwizzer2 } = this.props.player;
 
         return(
             <div className="player-actions">
@@ -37,9 +37,9 @@ class PlayerCard extends React.Component {
                     content={'-'} />
 
                 <div className="tiles">
-                    <TileZwap color={color} zwap={zwap} onClick={flipZwapTile} />
-                    <TileBezzerwizzer color={color} bezzerwizzer={bezzerwizzer === 2} onClick={flipBezzerwizzerTile} />
-                    <TileBezzerwizzer color={color} bezzerwizzer={bezzerwizzer === 1 || bezzerwizzer === 2} onClick={flipBezzerwizzerTile} />
+                    <TileZwap color={color} flipped={!zwap} onClick={flipZwapTile} />
+                    <TileBezzerwizzer color={color} flipped={!bezzerwizzer1} tile={1} onClick={flipBezzerwizzerTile} />
+                    <TileBezzerwizzer color={color} flipped={!bezzerwizzer2} tile={2} onClick={flipBezzerwizzerTile} />
                     {tiles.map(tile => <TileCategory key={tile.name} name={tile.name} imageSrc={tile.image} flipped={tile.flipped} onClick={flipCategoryTile} />)}
                 </div>
             </div>

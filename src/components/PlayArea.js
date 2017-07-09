@@ -23,28 +23,32 @@ class PlayArea extends React.Component {
                     name: 'Player 1',
                     space: 0,
                     zwap: true,
-                    bezzerwizzer: 2
+                    bezzerwizzer1: true,
+                    bezzerwizzer2: true,
                 },
                 red: {
                     color: 'red',
                     name: 'Player 2',
                     space: 0,
                     zwap: true,
-                    bezzerwizzer: 2
+                    bezzerwizzer1: true,
+                    bezzerwizzer2: true,
                 },
                 blue: {
                     color: 'blue',
                     name: 'Player 3',
                     space: 0,
                     zwap: true,
-                    bezzerwizzer: 2
+                    bezzerwizzer1: true,
+                    bezzerwizzer2: true,
                 },
                 yellow: {
                     color: 'yellow',
                     name: 'Player 4',
                     space: 0,
                     zwap: true,
-                    bezzerwizzer: 2
+                    bezzerwizzer1: true,
+                    bezzerwizzer2: true,
                 }
             },
             tiles: tiles,
@@ -72,9 +76,10 @@ class PlayArea extends React.Component {
         this.setState({ players });
     }
 
-    flipBezzerwizzerTile(color) {
+    flipBezzerwizzerTile(color, tile) {
         const players = {...this.state.players};
-        players[color].bezzerwizzer === 2 ? players[color].bezzerwizzer = 1 : players[color].bezzerwizzer = 0;
+        tile === 1 ? players[color].bezzerwizzer1 = false : '';
+        tile === 2 ? players[color].bezzerwizzer2 = false : '';
         this.setState({ players });
     }
 
