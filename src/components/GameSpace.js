@@ -10,7 +10,7 @@ class GameSpace extends React.Component {
                     Object
                         .keys(players)
                         .filter(key => players[key].space === space)
-                        .map(key => <div className="pawn" data-color={players[key].color}></div>)
+                        .map(key => <div className="pawn" key={players[key].color} data-color={players[key].color}></div>)
                 }
             </div>
         );
