@@ -3,6 +3,7 @@ import tiles from './../data1';
 
 import PlayerCard from './PlayerCard';
 import GameBoard from './GameBoard';
+import DialogZwap from './DialogZwap';
 
 // PlayArea.propTypes = {};
 
@@ -52,6 +53,7 @@ class PlayArea extends React.Component {
                 }
             },
             tiles: tiles,
+            zwapInProgress: false,
         };
     }
 
@@ -86,6 +88,8 @@ class PlayArea extends React.Component {
     render() {
         return(
             <div className="game-section">
+                <DialogZwap isOpen={this.state.zwapInProgress} />
+
                 <div className="players">
                     { 
                         Object
@@ -97,7 +101,8 @@ class PlayArea extends React.Component {
                                                 movePlayer={this.movePlayer}
                                                 flipCategoryTile={this.flipCategoryTile}
                                                 flipZwapTile={this.flipZwapTile}
-                                                flipBezzerwizzerTile={this.flipBezzerwizzerTile} />)
+                                                flipBezzerwizzerTile={this.flipBezzerwizzerTile}
+                                                zwapInProgress={this.state.zwapInProgress} />)
                     }
                 </div>
 
