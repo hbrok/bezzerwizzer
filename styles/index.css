@@ -499,6 +499,10 @@ button {
 .play-area {
   align-items: center; }
 
+  .player-gameplay {
+    display: none;
+}
+
 .title {
   grid-row: 2 / 6;
   grid-column: 2 / 6;
@@ -566,6 +570,7 @@ body {
     .tile.flipped * {
       opacity: 0; }
   .tile * {
+    margin: auto;
     align-self: center;
     opacity: 1;
     transition: opacity 0s .1s; }

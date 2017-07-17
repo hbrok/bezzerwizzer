@@ -193,6 +193,10 @@ button {
     }
 }
 
+.player-gameplay {
+    display: none;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -224,6 +228,7 @@ body {
     }
 
     * {
+        margin: auto;
         align-self: center;
         opacity: 1;
         transition: opacity 0s .1s;

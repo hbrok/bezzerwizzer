@@ -6,13 +6,13 @@
  * @param  {String}  selector Selector to match against
  * @return {Boolean|Element}  Returns null if not match found
  */
-var getClosest = function ( elem, selector ) {
-    // Get closest match
-    for ( ; elem && elem !== document; elem = elem.parentNode ) {
-        if ( elem.matches( selector ) ) return elem;
-    }
+var getClosest = function (elem, selector) {
+  // Get closest match
+  for (; elem && elem !== document; elem = elem.parentNode) {
+    if (elem.matches(selector)) return elem;
+  }
 
-    return null;
+  return null;
 };
 
 /**
@@ -28,20 +28,20 @@ var getClosest = function ( elem, selector ) {
  * @param {boolean} [capture] Capture the event
  */
 function $delegate(target, selector, type, handler, capture) {
-	const dispatchEvent = event => {
-		const targetElement = event.target;
-		const potentialElements = target.querySelectorAll(selector);
-		let i = potentialElements.length;
+  const dispatchEvent = event => {
+    const targetElement = event.target;
+    const potentialElements = target.querySelectorAll(selector);
+    let i = potentialElements.length;
 
-		while (i--) {
-			if (potentialElements[i] === targetElement) {
-				handler.call(targetElement, event);
-				break;
-			}
-		}
-	};
+    while (i--) {
+      if (potentialElements[i] === targetElement) {
+        handler.call(targetElement, event);
+        break;
+      }
+    }
+  };
 
-	$on(target, type, dispatchEvent, !!capture);
+  $on(target, type, dispatchEvent, !!capture);
 }
 
 
@@ -54,7 +54,7 @@ function $delegate(target, selector, type, handler, capture) {
  * @param {boolean} [capture] Capture the event
  */
 function $on(target, type, callback, capture) {
-	target.addEventListener(type, callback, !!capture);
+  target.addEventListener(type, callback, !!capture);
 }
 
 
@@ -70,6 +70,7 @@ class Game {
     this.moveButtons = '[data-move]';
     this.confirmZwapButton = document.querySelector('[data-confirm]');
     this.cancelZwapButton = document.querySelector('[data-cancel]');
+    this.isSetup = true;
     this.zwapInProgress = {
       status: false,
       player: false,
@@ -108,20 +109,65 @@ class Game {
     // Draw tiles for each player.
     this.players.forEach(player => player.drawTiles());
 
+    // Game play listeners.
     $delegate(document, this.moveButtons, 'click', this.handleMove, false);
     $delegate(document, '.tile, .tile > *', 'click', this.handleFlip, false);
     $delegate(document, '[data-zwap], [data-zwap] > *', 'click', this.handleZwap, false);
 
+    // Game setup listeners.
+    $delegate(document, '[data-confirm]', 'click', this.startGame, false);
+
+    document.querySelectorAll(`.tile-value`).forEach(select => {
+      select.addEventListener('change', (e) => {
+        const tile = document.querySelectorAll(`.tile-category[data-color="${ select.dataset.color }"]`)[parseInt(select.dataset.tile) - 1];
+        tile.dataset.tile = select.value;
+      })
+    });
+
+    // Zwap listeners.
     this.confirmZwapButton.addEventListener('click', this.confirmZwap);
     this.cancelZwapButton.addEventListener('click', this.cancelZwap);
   }
+
+  startGame() {
+    game.players.forEach(player => {
+      // Get player names and replace player name text w/input text.
+      const nameInput = document.querySelector(`.player-name-setup[data-color="${ player.color }"]`);
+      document.querySelector(`.player-name[data-color="${ player.color }"]`).innerText = nameInput.value || `${ player.color } player`;
+
+      // Sort tiles in correct order.
+      const parent = document.querySelector(`.tiles-gameplay[data-color="${ player.color }"]`);
+      const tiles = Array.from(document.querySelectorAll(`.tile-category[data-color="${ player.color }"]`))
+        .sort((a, b) => a.dataset.tile > b.dataset.tile ? 1 : -1);
+      tiles.forEach(tile => parent.appendChild(tile))
+
+      // Arrange tiles in correct order.
+      document.querySelectorAll(`.tiles-setup .tile[data-color="${player.color}"]`).forEach(tile => {
+        var index = parseInt(tile.dataset.tile, 10) - 1;
+        var tiles = document.querySelectorAll('.player-gameplay .tile-category');
+        tiles[index].parentNode.replaceChild(tile, tiles[index]);
+      });
+    });
+
+    // Remove game setup wrapper.
+    document.querySelectorAll('.player-setup').forEach(el => el.parentNode.removeChild(el));
+
+    // Show gameplay content.
+    document.querySelectorAll('.player-gameplay').forEach(el => el.style.display = 'block');
+
+    // Hide setup notice
+    document.querySelector('.notice-setup').classList.remove('is-active');
+
+    game.isSetup = false;
+  }
+
   /**
    * Returns an array of tiles without an assigned player.
    * 
    * @return {array} tiles
    */
   getAvailableTiles() {
-    return this.tiles.filter(tile => ! tile.player);
+    return this.tiles.filter(tile => !tile.player);
   }
 
   getTileFromElem(elem) {
@@ -129,7 +175,7 @@ class Game {
   }
 
   handleMove(e) {
-    if ( ! game.zwapInProgress.status ) {
+    if (!game.zwapInProgress.status) {
       const color = e.target.dataset.color;
       const move = parseInt(e.target.dataset.move);
 
@@ -144,26 +190,28 @@ class Game {
   handleFlip(e) {
     const tile = getClosest(e.target, '.tile');
 
-    // If not doing zwap, flip tile like normal.
-    if ( ! game.zwapInProgress.status ) {
-      tile.classList.contains('flipped') ? tile.classList.remove('flipped') : tile.classList.add('flipped');
+    // If not doing zwap, and not in game setup, flip tile like normal.
+    if (!game.isSetup) {
+      if (!game.zwapInProgress.status) {
+        tile.classList.contains('flipped') ? tile.classList.remove('flipped') : tile.classList.add('flipped');
 
-    // If doing zwap only do something if tile is a category tile.
-    } else if (tile.classList.contains('tile-category')) {
-      const tileClone = tile.cloneNode(true);
-      const givingTile = document.querySelector('.tile-giving');
-      const takingTile = document.querySelector('.tile-taking');
+        // If doing zwap only do something if tile is a category tile.
+      } else if (tile.classList.contains('tile-category')) {
+        const tileClone = tile.cloneNode(true);
+        const givingTile = document.querySelector('.tile-giving');
+        const takingTile = document.querySelector('.tile-taking');
 
-      if (tile.dataset.color === game.zwapInProgress.player.color) {
-        // Add to giving
-        game.zwapInProgress.givingTile = game.getTileFromElem(tile);
-        givingTile.innerHTML = '';
-        givingTile.appendChild(tileClone);
-      } else {
-        // Add to taking.
-        game.zwapInProgress.takingTile = game.getTileFromElem(tile);
-        takingTile.innerHTML = '';
-        takingTile.appendChild(tileClone);
+        if (tile.dataset.color === game.zwapInProgress.player.color) {
+          // Add to giving
+          game.zwapInProgress.givingTile = game.getTileFromElem(tile);
+          givingTile.innerHTML = '';
+          givingTile.appendChild(tileClone);
+        } else {
+          // Add to taking.
+          game.zwapInProgress.takingTile = game.getTileFromElem(tile);
+          takingTile.innerHTML = '';
+          takingTile.appendChild(tileClone);
+        }
       }
     }
   }
@@ -172,7 +220,7 @@ class Game {
     const elem = getClosest(e.target, '[data-zwap]');
     const player = game.players.filter(player => player.color == elem.dataset.color)[0];
 
-     // Check if player has already zwapped.
+    // Check if player has already zwapped.
     if (player.zwapTiles > 0 && game.zwapInProgress.status === false) {
       game.zwapInProgress.player = player;
       game.zwapInProgress.status = true;
@@ -222,7 +270,7 @@ class Pawn {
     this.zwapTiles = 1;
     this.bezzerwizzerTiles = 2;
   }
-  
+
   /**
    * @return {array} Array of tile assigned to this player
    */
@@ -241,7 +289,7 @@ class Pawn {
       tile.player = this;
       tile.position = this.tiles.length - 1;
     }
-    
+
     this.tiles.forEach(tile => tile.init());
   }
 
@@ -280,7 +328,7 @@ class Tile {
     this.elem = document.querySelectorAll(`.tile-category[data-color=${this.player.color}]`)[this.position];
     this.render();
   }
-  
+
   /**
    * Updates the DOM with the new tile location.
    */
@@ -307,9 +355,9 @@ class Tile {
 
 // Create pawns.
 player1 = new Pawn("Green Player", "green", 1),
-player2 = new Pawn("Blue Player", "blue", 1),
-player3 = new Pawn("Red Player", "red", 1),
-player4 = new Pawn("Yellow Player", "yellow", 1)
+  player2 = new Pawn("Blue Player", "blue", 1),
+  player3 = new Pawn("Red Player", "red", 1),
+  player4 = new Pawn("Yellow Player", "yellow", 1)
 
 // Create game.
 const game = new Game([player1, player2, player3, player4]);

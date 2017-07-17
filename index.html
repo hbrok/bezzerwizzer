@@ -29,64 +29,263 @@
             <button class="notice-button button-cancel" data-cancel>Cancel</button>
         </div>
 
+        <div class="notice notice-setup is-active">
+
+            <p class="notice-text">Enter player names and choose tile order.</p>
+
+            <button class="notice-button button-confirm" data-confirm>Start Game</button>
+        </div>
+
         <div class="players">
             <div class="player-actions" data-color="green">
-                <span class="player-name" contenteditable>Player 1</span>
-                <button data-color="green" data-move="1" title="Move forwards one space">+</button>
-                <button data-color="green" data-move="-1" title="Move backwards one space">-</button>
-                <div class="tiles">
-                    <button class="tile tile-zwap" data-color="green" data-zwap><span>z</span></button>
-                    <button class="tile tile-bezzerwizzer" data-color="green" data-bezzerwizzer><span>b</span></button>
-                    <button class="tile tile-bezzerwizzer" data-color="green" data-bezzerwizzer><span>b</span></button>
-                    <button class="tile tile-category" data-color="green"><img src="" alt=""></button>
-                    <button class="tile tile-category" data-color="green"><img src="" alt=""></button>
-                    <button class="tile tile-category" data-color="green"><img src="" alt=""></button>
-                    <button class="tile tile-category" data-color="green"><img src="" alt=""></button>
+                <div class="player-setup">
+                    <label class="">
+                        Green Player:
+                        <input type="text" class="player-name-setup" data-color="green" value="" placeholder="Enter player name">
+                    </label>
+
+                    <div class="tiles tiles-setup">
+                        <span class="">
+                            <button class="tile tile-category tile-1" data-tile="1" data-color="green"><img src="" alt=""></button>
+                            <select class="tile-value" data-color="green" data-tile="1">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </span>
+
+                        <span class="">
+                            <button class="tile tile-category" data-tile="2" data-color="green"><img src="" alt=""></button>
+                            <select class="tile-value" data-color="green" data-tile="2">
+                                <option value="1">1</option>
+                                <option value="2" selected>2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </span>
+
+                        <span class="">
+                            <button class="tile tile-category" data-tile="3" data-color="green"><img src="" alt=""></button>
+                            <select class="tile-value"  data-color="green" data-tile="3">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3" selected>3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </span>
+
+                        <span class="">
+                            <button class="tile tile-category"  data-tile="4" data-color="green"><img src="" alt=""></button>
+                            <select class="tile-value" data-color="green" data-tile="4">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4" selected>4</option>
+                            </select>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="player-gameplay">
+                    <span class="player-name" data-color="green" contenteditable>Player 1</span>
+                    <button data-color="green" data-move="1" title="Move forwards one space">+</button>
+                    <button data-color="green" data-move="-1" title="Move backwards one space">-</button>
+
+                    <div class="tiles tiles-gameplay" data-color="green">
+                        <button class="tile tile-zwap" data-color="green" data-zwap><span>z</span></button>
+                        <button class="tile tile-bezzerwizzer" data-color="green" data-bezzerwizzer><span>b</span></button>
+                        <button class="tile tile-bezzerwizzer" data-color="green" data-bezzerwizzer><span>b</span></button>
+                    </div>
                 </div>
             </div>
 
             <div class="player-actions" data-color="yellow">
-                <span class="player-name" contenteditable>Player 2</span>
-                <button data-color="yellow" data-move="1" title="Move forwards one space">+</button>
-                <button data-color="yellow" data-move="-1" title="Move backwards one space">-</button>
-                <div class="tiles">
-                    <button class="tile tile-zwap" data-color="yellow" data-zwap><span>z</span></button>
-                    <button class="tile tile-bezzerwizzer" data-color="yellow"><span>b</span></button>
-                    <button class="tile tile-bezzerwizzer" data-color="yellow"><span>b</span></button>
-                    <button class="tile tile-category" data-color="yellow"><img src="" alt=""></button>
-                    <button class="tile tile-category" data-color="yellow"><img src="" alt=""></button>
-                    <button class="tile tile-category" data-color="yellow"><img src="" alt=""></button>
-                    <button class="tile tile-category" data-color="yellow"><img src="" alt=""></button>
+                <div class="player-setup">
+                    <label class="">
+                        Yellow Player:
+                        <input type="text" class="player-name-setup" data-color="yellow" value="" placeholder="Enter player name">
+                    </label>
+
+                    <div class="tiles tiles-setup">
+                        <span class="">
+                            <button class="tile tile-category tile-1" data-tile="1" data-color="yellow"><img src="" alt=""></button>
+                            <select class="tile-value" data-color="yellow" data-tile="1">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </span>
+
+                        <span class="">
+                            <button class="tile tile-category" data-tile="2" data-color="yellow"><img src="" alt=""></button>
+                            <select class="tile-value" data-color="yellow" data-tile="2">
+                                <option value="1">1</option>
+                                <option value="2" selected>2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </span>
+
+                        <span class="">
+                            <button class="tile tile-category" data-tile="3" data-color="yellow"><img src="" alt=""></button>
+                            <select class="tile-value"  data-color="yellow" data-tile="3">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3" selected>3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </span>
+
+                        <span class="">
+                            <button class="tile tile-category"  data-tile="4" data-color="yellow"><img src="" alt=""></button>
+                            <select class="tile-value" data-color="yellow" data-tile="4">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4" selected>4</option>
+                            </select>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="player-gameplay">
+                    <span class="player-name" data-color="yellow" contenteditable>Player 1</span>
+                    <button data-color="yellow" data-move="1" title="Move forwards one space">+</button>
+                    <button data-color="yellow" data-move="-1" title="Move backwards one space">-</button>
+
+                    <div class="tiles tiles-gameplay" data-color="yellow">
+                        <button class="tile tile-zwap" data-color="yellow" data-zwap><span>z</span></button>
+                        <button class="tile tile-bezzerwizzer" data-color="yellow" data-bezzerwizzer><span>b</span></button>
+                        <button class="tile tile-bezzerwizzer" data-color="yellow" data-bezzerwizzer><span>b</span></button>
+                    </div>
                 </div>
             </div>
 
             <div class="player-actions" data-color="red">
-                <span class="player-name" contenteditable>Player 3</span>
-                <button data-color="red" data-move="1" title="Move forwards one space">+</button>
-                <button data-color="red" data-move="-1" title="Move backwards one space">-</button>
-                <div class="tiles">
-                    <button class="tile tile-zwap" data-color="red" data-zwap><span>z</span></button>
-                    <button class="tile tile-bezzerwizzer" data-color="red"><span>b</span></button>
-                    <button class="tile tile-bezzerwizzer" data-color="red"><span>b</span></button>
-                    <button class="tile tile-category" data-color="red"><img src="" alt=""></button>
-                    <button class="tile tile-category" data-color="red"><img src="" alt=""></button>
-                    <button class="tile tile-category" data-color="red"><img src="" alt=""></button>
-                    <button class="tile tile-category" data-color="red"><img src="" alt=""></button>
+                <div class="player-setup">
+                    <label class="">
+                        Red Player:
+                        <input type="text" class="player-name-setup" data-color="red" value="" placeholder="Enter player name">
+                    </label>
+
+                    <div class="tiles tiles-setup">
+                        <span class="">
+                            <button class="tile tile-category tile-1" data-tile="1" data-color="red"><img src="" alt=""></button>
+                            <select class="tile-value" data-color="red" data-tile="1">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </span>
+
+                        <span class="">
+                            <button class="tile tile-category" data-tile="2" data-color="red"><img src="" alt=""></button>
+                            <select class="tile-value" data-color="red" data-tile="2">
+                                <option value="1">1</option>
+                                <option value="2" selected>2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </span>
+
+                        <span class="">
+                            <button class="tile tile-category" data-tile="3" data-color="red"><img src="" alt=""></button>
+                            <select class="tile-value"  data-color="red" data-tile="3">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3" selected>3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </span>
+
+                        <span class="">
+                            <button class="tile tile-category"  data-tile="4" data-color="red"><img src="" alt=""></button>
+                            <select class="tile-value" data-color="red" data-tile="4">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4" selected>4</option>
+                            </select>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="player-gameplay">
+                    <span class="player-name" data-color="red" contenteditable>Player 1</span>
+                    <button data-color="red" data-move="1" title="Move forwards one space">+</button>
+                    <button data-color="red" data-move="-1" title="Move backwards one space">-</button>
+
+                    <div class="tiles tiles-gameplay" data-color="red">
+                        <button class="tile tile-zwap" data-color="red" data-zwap><span>z</span></button>
+                        <button class="tile tile-bezzerwizzer" data-color="red" data-bezzerwizzer><span>b</span></button>
+                        <button class="tile tile-bezzerwizzer" data-color="red" data-bezzerwizzer><span>b</span></button>
+                    </div>
                 </div>
             </div>
 
             <div class="player-actions" data-color="blue">
-                <span class="player-name" contenteditable>Player 4</span>
-                <button data-color="blue" data-move="1" title="Move forwards one space">+</button>
-                <button data-color="blue" data-move="-1" title="Move backwards one space">-</button>
-                <div class="tiles">
-                    <button class="tile tile-zwap" data-color="blue" data-zwap><span>z</span></button>
-                    <button class="tile tile-bezzerwizzer" data-color="blue"><span>b</span></button>
-                    <button class="tile tile-bezzerwizzer" data-color="blue"><span>b</span></button>
-                    <button class="tile tile-category" data-color="blue"><img src="" alt=""></button>
-                    <button class="tile tile-category" data-color="blue"><img src="" alt=""></button>
-                    <button class="tile tile-category" data-color="blue"><img src="" alt=""></button>
-                    <button class="tile tile-category" data-color="blue"><img src="" alt=""></button>
+                <div class="player-setup">
+                    <label class="">
+                        Blue Player:
+                        <input type="text" class="player-name-setup" data-color="blue" value="" placeholder="Enter player name">
+                    </label>
+
+                    <div class="tiles tiles-setup">
+                        <span>
+                            <button class="tile tile-category tile-1" data-tile="1" data-color="blue"><img src="" alt=""></button>
+                            <select class="tile-value" data-color="blue" data-tile="1">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </span>
+
+                        <span>
+                            <button class="tile tile-category" data-tile="2" data-color="blue"><img src="" alt=""></button>
+                            <select class="tile-value" data-color="blue" data-tile="2">
+                                <option value="1">1</option>
+                                <option value="2" selected>2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </span>
+
+                        <span>
+                            <button class="tile tile-category" data-tile="3" data-color="blue"><img src="" alt=""></button>
+                            <select class="tile-value"  data-color="blue" data-tile="3">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3" selected>3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </span>
+
+                        <span>
+                            <button class="tile tile-category"  data-tile="4" data-color="blue"><img src="" alt=""></button>
+                            <select class="tile-value" data-color="blue" data-tile="4">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4" selected>4</option>
+                            </select>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="player-gameplay">
+                    <span class="player-name" data-color="blue" contenteditable>Player 1</span>
+                    <button data-color="blue" data-move="1" title="Move forwards one space">+</button>
+                    <button data-color="blue" data-move="-1" title="Move backwards one space">-</button>
+
+                    <div class="tiles tiles-gameplay" data-color="blue">
+                        <button class="tile tile-zwap" data-color="blue" data-zwap><span>z</span></button>
+                        <button class="tile tile-bezzerwizzer" data-color="blue" data-bezzerwizzer><span>b</span></button>
+                        <button class="tile tile-bezzerwizzer" data-color="blue" data-bezzerwizzer><span>b</span></button>
+                    </div>
                 </div>
             </div>
         </div>
